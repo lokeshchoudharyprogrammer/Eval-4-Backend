@@ -18,7 +18,7 @@ server.get("/",(req,res)=>{
 res.send("Welcome to the Dashboard")
 })
 
-server.listen(process.env.PORT_NUMBER ?? 3030, async () => {
+server.listen(process.env.PORT_NUMBER , async () => {
     try {
         await connection
         console.log("server done")
