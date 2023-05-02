@@ -7,14 +7,18 @@ const userRoute = require("./Routes/userRoutes")
 const postRoute = require("./Routes/postRoutes")
 const postMiddle = require("./middleware/postMiddleware")
 const connection = require("./connection")
-let app = express()
-app.use(express.json())
+let server = express()
+server.use(express.json())
 
-app.use(cors())
-app.use("/users", userRoute)
-app.use("/posts", postRoute)
+server.use(cors())
+server.use("/users", userRoute)
+server.use("/posts", postRoute)
 
-app.listen(process.env.PORT_NUMBER ?? 3030, async () => {
+server.get("/",(req,res)=>{
+res.send("Welcome to the Dashboard")
+})
+
+server.listen(process.env.PORT_NUMBER ?? 3030, async () => {
     try {
         await connection
         console.log("server done")
